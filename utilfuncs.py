@@ -1,6 +1,7 @@
 import numpy as np
 import tkinter as tk
 import time
+import test_chess
 def draw_board(board):
     """Displays the state of the board on the terminal."""
     wpieces = ["__", "♜", "♞", "♝", "♚", "♛", "♟"]
@@ -142,38 +143,7 @@ def render_board(*args):
                 C.create_text((x * 50) + 25, (y * 50) + 30,text=wpieces[piece] , fill="#3b8c43", font="Times 40")
     top.mainloop()
 
+
 def test_board(board):
         """Test seek codes"""
-        board = board
-        wpieces = ["", "♜", "♞", "♝", "♚", "♛", "♟"]
-        bpieces = ["", "♖", "♘", "♗", "♔", "♕", "♙"]
-        rendered = []
-        board = args[0]
-        if len(args) == 2:
-            display_pattern = args[1]
-        else:
-            display_pattern = []
-        top = tk.Tk()
-
-        simplified = simplify_board(board)
-        top.title("M-Nah-Peehp 2")
-        top.geometry("400x400")
-        C = tk.Canvas(top, height=400, width=400,bg="white")
-        C.pack()
-        for x in range(8):
-            for y in range(8):
-                if (y,x) in display_pattern:
-                    if (x + y) % 2: col = "#8f6f6f"
-                    else: col = "#bd8f8f"
-                else:
-                    if (x + y) % 2: col = "#6f8f72"
-                    else: col = "#adbd8f"
-                C.create_rectangle(x * 50,y * 50, x * 50 + 50,y * 50 + 50,fill=col, outline="")
-        for y,row in enumerate(simplified):
-            for x,piece in enumerate(row):
-                if piece > 6:
-                    C.create_text((x * 50) + 25, (y * 50) + 30, text=wpieces[piece - 6] , fill="#36663b",font="Times 40")
-                else:
-                    C.create_text((x * 50) + 25, (y * 50) + 30,text=wpieces[piece] , fill="#3b8c43", font="Times 40")
-
-        top.mainloop()
+        chesstest = test_chess.ChessTestGame(board)
