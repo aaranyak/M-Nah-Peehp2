@@ -14,6 +14,8 @@ def get_tiles(piece, board):
         return get_bishop_tiles(piece, board)
     if ptype[0] == 4:
         return get_king_tiles(piece, board)
+    if ptype[0] == 5:
+        return get_queen_tiles(piece, board)
     if ptype[0] == 6:
         return get_pawn_tiles(piece, board)
     else:
@@ -37,7 +39,7 @@ def get_pawn_tiles(piece, board):
                 filtered_tiles.append((y + 1, x + 1)) # If yes, add tile to list
         if x - 1 in range(0,8): # If x not on other edge
             if simple_board[y + 1][x - 1] == 1: # Check if piece is available for capture
-                filtered_tiles.append((y - 1, x - 1)) # If yes, add tile to list
+                filtered_tiles.append((y + 1, x - 1)) # If yes, add tile to list
 
     # If piece is a black pawn:
     elif y - 1 in range(0,8): # Check if the piece is at the opposite edge of the board.
@@ -157,4 +159,49 @@ def get_bishop_tiles(piece, board):
     simple_board = teamify_board(board, not ptype[1])
     y,x = get_position_of_piece(piece, board)
     tiles = []
+    for d in range(1,min(8 - y,8 - x)): # Loop through every square to the bottom-right of the bishop.
+        if simple_board[y + d][x + d] == 0: # If square contains friendly piece, break.
+            break
+        elif simple_board[y + d][x + d] == 1: # If square contains enemy piece, capture then break/
+            tiles.append((y + d,x + d))
+            break
+        else: # If square is empty, add square to list.
+            tiles.append((y + d,x + d))
+
+    for d in range(1,min(y + 1,x + 1)): # Loop through every square to the top-left of the bishop.
+        if simple_board[y - d][x - d] == 0: # If square contains friendly piece, break.
+            break
+        elif simple_board[y - d][x - d] == 1: # If square contains enemy piece, capture then break/
+            tiles.append((y - d,x - d))
+            break
+        else: # If square is empty, add square to list.
+            tiles.append((y - d,x - d))
+
+    for d in range(1,min(y + 1,8 - x)): # Loop through every square to the top-right of the bishop.
+        if simple_board[y - d][x + d] == 0: # If square contains friendly piece, break.
+            break
+        elif simple_board[y - d][x + d] == 1: # If square contains enemy piece, capture then break/
+            tiles.append((y - d,x + d))
+            break
+        else: # If square is empty, add square to list.
+            tiles.append((y - d,x + d))
+
+    for d in range(1,min(8 - y,x + 1)): # Loop through every square to the top-left of the bishop.
+        if simple_board[y + d][x - d] == 0: # If square contains friendly piece, break.
+            break
+        elif simple_board[y + d][x - d] == 1: # If square contains enemy piece, capture then break/
+            tiles.append((y + d,x - d))
+            break
+        else: # If square is empty, add square to list.
+            tiles.append((y + d,x - d))
+    return tiles
+
+def get_queen_tiles(piece, board):
+    """Get the available moves for a queen"""
+    tiles = []
+    rook_moves = get_rook_tiles(piece, board) # Moves the queen like a rook.
+    bishop_moves = get_bishop_tiles(piece, board) # Moves the queen like a bishop.
+    tiles.extend(rook_moves) # Combine the rook moves into the queen moves.
+    tiles.extend(bishop_moves) # Combine the bishop moves into the queen moves.
+
     return tiles
