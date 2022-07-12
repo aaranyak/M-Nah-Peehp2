@@ -109,6 +109,22 @@ def display_pattern(tiles):
     for y,x in tiles:
         display[y][x] = 1
     return display
+def name_piece(piece):
+    ptype = get_piece_by_id(piece)
+    if ptype[0] == 1:
+        return "Rook"
+    if ptype[0] == 2:
+        return "Knight"
+    if ptype[0] == 3:
+        return "Bishop"
+    if ptype[0] == 4:
+        return "King"
+    if ptype[0] == 5:
+        return "Queen"
+    if ptype[0] == 6:
+        return "Pawn"
+    else:
+        return "Empty"
 def render_board(*args):
     """Displays the state of the board on a separate window"""
     wpieces = ["", "♜", "♞", "♝", "♚", "♛", "♟"]

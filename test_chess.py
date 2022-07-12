@@ -1,11 +1,11 @@
+import numpy as np
 import utilfuncs as uf
 import tkinter as tk
 import seek_codes as sk
-class ChessTestGame(object):
-    """docstring for ChessTestGame."""
+class TestingChess():
+    """docstring for TestingChess."""
 
     def __init__(self, board):
-        super(ChessTestGame, self).__init__()
         self.mousepos = (0,0)
         self.board = board
         self.selected = 0
@@ -117,4 +117,4 @@ class ChessTestGame(object):
                         C.create_text((x * 50) + 25, (y * 50) + 30,text=wpieces[piece] , fill="#3b8c43", font="Times 40")
 def test_board(board):
     """Test seek codes"""
-    chesstest = ChessTestGame(board)
+    chesstest = TestingChess(board)
