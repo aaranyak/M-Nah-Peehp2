@@ -1,6 +1,7 @@
 import numpy as np
 from utilfuncs import *
 from seek_codes import *
+from test_chess import *
 board_init_state = [
     [1,2,3,4,5,6,7,8],
     [9,10,11,12,13,14,15,16],

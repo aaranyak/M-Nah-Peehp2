@@ -1,6 +1,6 @@
 import utilfuncs as uf
 import tkinter as tk
-import test_chess.seek_codes as sk
+import seek_codes as sk
 class ChessTestGame(object):
     """docstring for ChessTestGame."""
 
@@ -115,3 +115,6 @@ class ChessTestGame(object):
                         C.create_text((x * 50) + 25, (y * 50) + 30, text=wpieces[piece - 6] , fill="#36663b",font="Times 40")
                     else:
                         C.create_text((x * 50) + 25, (y * 50) + 30,text=wpieces[piece] , fill="#3b8c43", font="Times 40")
+def test_board(board):
+    """Test seek codes"""
+    chesstest = ChessTestGame(board)

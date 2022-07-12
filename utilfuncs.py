@@ -1,7 +1,6 @@
 import numpy as np
 import tkinter as tk
 import time
-import test_chess
 def draw_board(board):
     """Displays the state of the board on the terminal."""
     wpieces = ["__", "♜", "♞", "♝", "♚", "♛", "♟"]
@@ -142,8 +141,3 @@ def render_board(*args):
             else:
                 C.create_text((x * 50) + 25, (y * 50) + 30,text=wpieces[piece] , fill="#3b8c43", font="Times 40")
     top.mainloop()
-
-
-def test_board(board):
-        """Test seek codes"""
-        chesstest = test_chess.ChessTestGame(board)
