@@ -6,7 +6,7 @@ def is_check(board, colour):
     opponent_pieces = get_pieces_from_board(board, not colour) # Get the id's of all the opponent's pieces.
     attacked_squares = []
     for piece in opponent_pieces: # Loop through every piece in the opponent's team.
-        piece_squares = get_tiles(piece) # Get all the squares this piece can move to.
+        piece_squares = get_tiles(piece, board) # Get all the squares this piece can move to.
         attacked_squares.extend(piece_squares) # Add these to the list of all threatned squares.
     if colour: # If colour is white,
         king_position = get_position_of_piece(4, board) # Get the position of the white king.
