@@ -23,3 +23,7 @@ class ChessGame():
         """Move a piece to another tile"""
         cy,cx = get_position_of_piece(piece, self.board)
         dy,dx = tile
+        self.board[cy][cx] = 0
+        self.board[dy][dx] = piece
+    def make_move(self, piece, tile):
+        avail = get_tiles

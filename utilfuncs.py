@@ -125,6 +125,24 @@ def name_piece(piece):
         return "Pawn"
     else:
         return "Empty"
+
+def get_pieces_from_board(*args):
+    """Returns all the pieces from a board"""
+    board = args[0]
+    if len(args) == 2:
+        team = args[1]
+    else:
+        team = None
+    line_board = board.reshape(64)
+    if team is None:
+        pieces = filter(lambda num:num, line_board)
+    else:
+        if team:
+            pieces = filter(lambda num:num and num < 17, line_board)
+        else:
+            pieces = filter(lambda num:num and num > 16, line_board)
+    return list(pieces)
+
 def render_board(*args):
     """Displays the state of the board on a separate window"""
     wpieces = ["", "♜", "♞", "♝", "♚", "♛", "♟"]

@@ -24,4 +24,4 @@ board_init_state = [
 # ]
 board = np.array(board_init_state)
 display_seek = get_tiles(1,board)
-test_board(board)
+print(get_pieces_from_board(board, False))

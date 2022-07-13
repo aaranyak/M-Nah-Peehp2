@@ -2,6 +2,7 @@ import numpy as np
 import utilfuncs as uf
 import tkinter as tk
 import seek_codes as sk
+import chess_functions as cf
 class TestingChess():
     """docstring for TestingChess."""
 
@@ -86,6 +87,10 @@ class TestingChess():
                 else:
                     C.create_text((x * 50) + 25, (y * 50) + 30,text=wpieces[piece] , fill="#3b8c43", font="Times 40")
     def move_piece(self, click):
+        if cf.is_check(self.board, True):
+            print("White king in check!")
+        if cf.is_check(self.board, False):
+            print("Black king in check!")
         if self.selected != 0:
             my, mx = self.mousepos
             px, py = int(mx / 50), int(my / 50)
