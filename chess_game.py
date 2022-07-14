@@ -33,7 +33,7 @@ class ChessGame():
         if ptype != 0 and piece in get_pieces_from_board(self.board): # Check if piece is on board.
             if tile in get_tiles(piece, self.board): # If move is pseudo legal check if it is legal.
                 if is_legal(piece, tile, self.board): # If move is legal, play move.
-                    self.move_piece(piece, board)
+                    self.move_piece(piece, tile)
                 else:
                     raise IllegalMove(piece, tile)
             else: # If move is not pseudo-legal, raise an error
@@ -42,4 +42,3 @@ class ChessGame():
         else: # If not, raise an error.
             raise KilledPiece(piece)
         self.turn = not self.turn
-        

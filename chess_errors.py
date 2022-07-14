@@ -6,7 +6,7 @@ class ChessException(Exception):
 
 class IllegalMove(ChessException):
     def __init__(self, piece, tile):
-        self.message = "Sorry, you cannot move your " + name_piece(piece) + " to this square."
+        self.message = "Sorry, you cannot move your " + name_piece(piece) + " to " + translate_to_chess_notation(tile) 
         super(ChessException, self).__init__(self.message)
 
 
