@@ -55,3 +55,12 @@ def is_checkmate(board, colour):
             return 0 # Stalemate!
         else:
             return 1 # Not Stalemate.
+def get_all_moves(board, colour):
+    """Returns all possible moves to play"""
+    pieces = get_pieces_from_board(board, colour)
+    moves = []
+    for piece in pieces: # Loop through all the pieces.
+        for move in get_tiles(piece): # Play all moves.
+            if is_legal(piece, move): # If move is legal.
+                moves.append(move) # Add the move
+    return moves
