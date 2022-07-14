@@ -42,7 +42,7 @@ def get_pawn_tiles(piece, board):
                 filtered_tiles.append((y + 1, x - 1)) # If yes, add tile to list
 
     # If piece is a black pawn:
-    elif y - 1 in range(0,8): # Check if the piece is at the opposite edge of the board.
+    elif not ptype[1] and y - 1 in range(0,8): # Check if the piece is at the opposite edge of the board.
         if simple_board[y - 1][x] == 3: # Check if tile in front of pawn is blocked by piece.
             filtered_tiles.append((y - 1, x)) # Add the front tile to the list.
             if y == 6: # If pawn is on sixth file, ability to move two squares ahead.
