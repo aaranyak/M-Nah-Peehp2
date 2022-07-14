@@ -14,7 +14,7 @@ class RandomChessGame(ChessGame):
         self.display = tk.Tk()
         self.display.title("Random Game")
         self.display.geometry("400x400")
-        self.canvas = tk.Canvas(top, height=400, width=400,bg="white")
+        self.canvas = tk.Canvas(self.display, height=400, width=400,bg="white")
     def play(self):
         playing = True
         self.display.mainloop()
