@@ -1,6 +1,8 @@
 import numpy as np
 from utilfuncs import *
 from seek_codes import *
+from chess_functions import *
+from chess_errors import *
 class ChessGame():
     """This represents a basic game of chess
        It provides basic functions for playing a game
@@ -26,4 +28,18 @@ class ChessGame():
         self.board[cy][cx] = 0
         self.board[dy][dx] = piece
     def make_move(self, piece, tile):
-        avail = get_tiles
+        """Make a move on the chessboard"""
+        ptype = get_piece_by_id(piece)[0]
+        if ptype != 0 and piece in get_pieces_from_board(self.board): # Check if piece is on board.
+            if tile in get_tiles(piece, self.board): # If move is pseudo legal check if it is legal.
+                if is_legal(piece, tile, self.board): # If move is legal, play move.
+                    self.move_piece(piece, board)
+                else:
+                    raise IllegalMove(piece, tile)
+            else: # If move is not pseudo-legal, raise an error
+                raise IllegalMove(piece, tile)
+
+        else: # If not, raise an error.
+            raise KilledPiece(piece)
+        self.turn = not self.turn
+        

@@ -2,6 +2,7 @@ import numpy as np
 from utilfuncs import *
 from seek_codes import *
 from test_chess import *
+from chess_game import ChessGame
 board_init_state = [
     [1,2,3,4,5,6,7,8],
     [9,10,11,12,13,14,15,16],
@@ -22,6 +23,5 @@ board_init_state = [
 #     [0,0,0,0,0,0,0,0],
 #     [0,0,0,0,0,0,0,0],
 # ]
-board = np.array(board_init_state)
-display_seek = get_tiles(1,board)
-test_board(board)
+game = ChessGame()
+game.make_move(1, (0,4))

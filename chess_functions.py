@@ -16,3 +16,42 @@ def is_check(board, colour):
         return True # Means king is in check.
     else:
         return False # King not in check
+def move_piece_on_board(piece, tile, board):
+    """Return board with a moved piece"""
+    board = board
+    cy,cx = get_position_of_piece(piece, board)
+    dy,dx = tile
+    board[cy][cx] = 0
+    board[dy][dx] = piece
+    return board
+def is_legal(piece, tile, board):
+    """Checks if move is legal"""
+    col = get_piece_by_id(piece)[1] # Colour of piece.
+    board = move_piece_on_board(piece, tile, board) # Make move on separate board.
+    if is_check(board, col): # If results in check, move is illegal.
+        return False
+    else: # Otherwise, move is legal.
+        return True
+
+def is_checkmate(board, colour):
+    """Checks if it is checkmate."""
+    opponent_pieces = get_pieces_from_board(board, not colour) # Get the id's of all the opponent's pieces.
+    is_checkmate = True
+    for piece in opponent_pieces: # Loop through all of the opponent's pieces.
+        piece_moves = get_tiles(piece, board) # All possible moves for piece to play.
+        for move in piece_moves: # Play all the moves.
+            new_board = move_piece_on_board()
+            if is_check(new_board, colour):
+                is_checkmate = True
+            else:
+                is_checkmate = False
+    if is_check(board, colour):
+        if is_checkmate:
+            return -1 # Checkmate!
+        else:
+            return 1 # Not Checkmate.
+    else:
+        if is_checkmate:
+            return 0 # Stalemate!
+        else:
+            return 1 # Not Stalemate.

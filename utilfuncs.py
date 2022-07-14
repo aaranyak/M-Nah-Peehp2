@@ -110,6 +110,7 @@ def display_pattern(tiles):
         display[y][x] = 1
     return display
 def name_piece(piece):
+    """Returns the name of the piece"""
     ptype = get_piece_by_id(piece)
     if ptype[0] == 1:
         return "Rook"
@@ -125,7 +126,10 @@ def name_piece(piece):
         return "Pawn"
     else:
         return "Empty"
-
+def translate_to_chess_notation(tile):
+    files = reversed(["a","b","c","d","e","f","g","h"])
+    y,x = tile
+    return file[x] + y + 1
 def get_pieces_from_board(*args):
     """Returns all the pieces from a board"""
     board = args[0]

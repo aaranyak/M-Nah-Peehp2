@@ -6,10 +6,11 @@ class ChessException(Exception):
 
 class IllegalMove(ChessException):
     def __init__(self, piece, tile):
-        super(IllegalMove, self).__init__()
         self.message = "Sorry, you cannot move your " + name_piece(piece) + " to this square."
+        super(ChessException, self).__init__(self.message)
+
 
 class KilledPiece(ChessException):
-    def __init__(self, piece, tile):
-        super(IllegalMove, self).__init__()
+    def __init__(self, piece):
         self.message = "Sorry, your " + name_piece(piece) + " has been eaten"
+        super(ChessException, self).__init__(self.message)
