@@ -58,3 +58,38 @@ def get_all_moves(board, colour):
             if is_legal(piece, move, board): # If move is legal.
                 moves.append((piece, move)) # Add the move
     return moves
+
+def count_material(board, colour):
+    """Counts the material of pieces on the board."""
+    material = 0
+    my_pieces = get_pieces_from_board(board,colour)
+    opponent_pieces = get_pieces_from_board(board,not colour)
+    for piece in my_pieces:
+        ptype = get_piece_by_id(piece)[0]
+        if ptype == 6: # Piece is a pawn.
+            material += 10
+        if ptype == 1: # Piece is a rook.
+            material += 40
+        if ptype == 3: # Piece is a bishop.
+            material += 70
+        if ptype == 2: # Piece is knight.
+            material += 50
+        if ptype == 5: # Piece is queen.
+            material += 100
+        if ptype == 4: # Piece is king.
+            material += 600
+    for piece in opponent_pieces:
+        ptype = get_piece_by_id(piece)[0]
+        if ptype == 6: # Piece is a pawn.
+            material -= 10
+        if ptype == 1: # Piece is a rook.
+            material -= 40
+        if ptype == 3: # Piece is a bishop.
+            material -= 70
+        if ptype == 2: # Piece is knight.
+            material -= 50
+        if ptype == 5: # Piece is queen.
+            material -= 100
+        if ptype == 4: # Piece is king.
+            material -= 600
+    return material
