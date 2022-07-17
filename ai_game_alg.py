@@ -33,9 +33,7 @@ class AiVsHumanSimple(ChessGame):
             my, mx = self.mouse_position
             ty, tx = int(my / 50), int(mx / 50)
             ptype = get_piece_by_id(self.board[ty][tx])
-            if ptype[0] == 0:
-                self.selected = 0
-            else:
+            if ptype != 0:
                 if ptype[1] == self.color:
                     self.selected = self.board[ty][tx]
                     self.show_tiles = get_tiles(self.board[ty][tx], self.board)
