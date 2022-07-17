@@ -69,11 +69,11 @@ def count_material(board, colour):
         if ptype == 6: # Piece is a pawn.
             material += 10
         if ptype == 1: # Piece is a rook.
-            material += 40
-        if ptype == 3: # Piece is a bishop.
             material += 70
+        if ptype == 3: # Piece is a bishop.
+            material += 40
         if ptype == 2: # Piece is knight.
-            material += 50
+            material += 65
         if ptype == 5: # Piece is queen.
             material += 100
         if ptype == 4: # Piece is king.
@@ -83,11 +83,11 @@ def count_material(board, colour):
         if ptype == 6: # Piece is a pawn.
             material -= 10
         if ptype == 1: # Piece is a rook.
-            material -= 40
-        if ptype == 3: # Piece is a bishop.
             material -= 70
+        if ptype == 3: # Piece is a bishop.
+            material -= 40
         if ptype == 2: # Piece is knight.
-            material -= 50
+            material -= 65
         if ptype == 5: # Piece is queen.
             material -= 100
         if ptype == 4: # Piece is king.

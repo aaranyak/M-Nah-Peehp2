@@ -91,6 +91,7 @@ class AiVsHumanSimple(ChessGame):
                 self.update_canvas()
     def play_move(self):
         evaluation = minmax_pruning(self.board,3, not self.color, float("-inf"), float("inf"), True)
+        print(evaluation)
         self.make_move(evaluation[1], evaluation[2])
     def update_canvas(self):
         self.canvas.delete("all")
