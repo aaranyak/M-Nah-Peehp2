@@ -11,12 +11,18 @@ int main(int argc, char const *argv[]) {
     {32,31,30,29,28,27,26,25},
     {24,23,22,20,21,19,18,17},
   };
+  int newtester = testarrayer();
   for (size_t y = 0; y < 8; y++) {
     for (size_t x = 0; x < 8; x++) {
-      printf("%d", getPieceById(board[y][x]));
+      printf("%d", newtester[y][x]);
       printf("%s", " ");
     }
     printf("%s", "\n");
   }
   return 0;
+}
+
+int testarrayer() {
+  int b[8][8];
+  return b;
 }
