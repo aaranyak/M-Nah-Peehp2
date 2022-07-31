@@ -12,6 +12,8 @@ int main(int argc, char const *argv[]) {
     {32,31,30,29,28,27,26,25},
     {24,23,22,20,21,19,18,17},
   };
-  drawSimpleBoard(**simplifyBoard(board));
+  int simpleBoard[8][8];
+  teamifyBoard(board, simpleBoard);
+  drawSimpleBoard(simpleBoard);
   return 0;
 }

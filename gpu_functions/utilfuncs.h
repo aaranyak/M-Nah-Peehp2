@@ -42,18 +42,51 @@ int getPieceColour(int id) {
   }
 }
 
-int (*) simplifyBoard(int board[8][8]) {
+void simplifyBoard(int board[8][8], int newBoard[8][8]) {
   // Returns a simplified version of the board with only piece types.
-  int simpleBoard[8][8];
   for (size_t y = 0; y < 8; y++) {
     for (size_t x = 0; x < 8; x++) {
-      simpleBoard[y][x] = board[y][x];
+      int piece = board[y][x];
+      int pieceColour = getPieceColour(piece);
+      int pieceType = getPieceById(piece);
+      if (pieceColour) {
+        newBoard[y][x] = pieceType;
+      }
+      else {
+        newBoard[y][x] = pieceType + 6;
+      }
     }
   }
-  return simpleBoard;
 }
 
-void drawSimpleBoard(int **board) {
+void teamifyBoard(int board[8][8], int newBoard[8][8]) {
+  // Returns a simplified version of the board with only piece colours.
+  for (size_t y = 0; y < 8; y++) {
+    for (size_t x = 0; x < 8; x++) {
+      int piece = board[y][x];
+      int pieceColour = getPieceColour(piece);
+      if (piece == 0) {
+        newBoard[y][x] = 3;
+      }
+      else if (pieceColour){
+        newBoard[y][x] = 0;
+      }
+      else {
+        newBoard[y][x] = 1;
+      }
+    }
+  }
+}
+
+void getPositionOfPiece(int board[8][8], int piece, int y, int x) {
+  // Returns the x and y position of the piece on the board.
+  for (size_t y = 0; y < 8; y++) {
+    for (size_t x = 0; x < 8; x++) {
+      /* code */
+    }
+  }
+}
+void drawSimpleBoard(int board[8][8]) {
   for (size_t y = 0; y < 8; y++) {
     for (size_t x = 0; x < 8; x++) {
       printf("%d", board[y][x]);
