@@ -30,3 +30,12 @@ int getPieceById(int id) {
     return 0;
   }
 }
+
+bool getPieceColour(int id) {
+  // Returns the pieces colour
+  if (id >= 17) {
+    return false;
+  } else {
+    return true;
+  }
+}
