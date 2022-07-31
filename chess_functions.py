@@ -77,7 +77,7 @@ def count_material(board, colour):
         if ptype == 5: # Piece is queen.
             material += 100
         if ptype == 4: # Piece is king.
-            material += 600
+            material += 0
     for piece in opponent_pieces:
         ptype = get_piece_by_id(piece)[0]
         if ptype == 6: # Piece is a pawn.
@@ -91,5 +91,5 @@ def count_material(board, colour):
         if ptype == 5: # Piece is queen.
             material -= 100
         if ptype == 4: # Piece is king.
-            material -= 600
+            material -= 0
     return material
