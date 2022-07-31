@@ -34,8 +34,31 @@ int getPieceById(int id) {
 int getPieceColour(int id) {
   // Returns the pieces colour
   if (id >= 17) {
+    // Piece is black.
     return 0;
   } else {
+    // Piece is white.
     return 1;
+  }
+}
+
+int (*) simplifyBoard(int board[8][8]) {
+  // Returns a simplified version of the board with only piece types.
+  int simpleBoard[8][8];
+  for (size_t y = 0; y < 8; y++) {
+    for (size_t x = 0; x < 8; x++) {
+      simpleBoard[y][x] = board[y][x];
+    }
+  }
+  return simpleBoard;
+}
+
+void drawSimpleBoard(int **board) {
+  for (size_t y = 0; y < 8; y++) {
+    for (size_t x = 0; x < 8; x++) {
+      printf("%d", board[y][x]);
+      printf("%s", " ");
+    }
+    printf("%s", "\n");
   }
 }
