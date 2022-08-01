@@ -78,14 +78,18 @@ void teamifyBoard(int board[8][8], int newBoard[8][8]) {
   }
 }
 
-void getPositionOfPiece(int board[8][8], int piece, int y, int x) {
+void getPositionOfPiece(int piece, int board[8][8] int posy, int posx) {
   // Returns the x and y position of the piece on the board.
   for (size_t y = 0; y < 8; y++) {
     for (size_t x = 0; x < 8; x++) {
-      /* code */
+      if (board[y][x] == piece) {
+        posx = x;
+        posy = y;
+      }
     }
   }
 }
+
 void drawSimpleBoard(int board[8][8]) {
   for (size_t y = 0; y < 8; y++) {
     for (size_t x = 0; x < 8; x++) {
