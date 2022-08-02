@@ -12,8 +12,13 @@ int main(int argc, char const *argv[]) {
     {32,31,30,29,28,27,26,25},
     {24,23,22,20,21,19,18,17},
   };
-  int simpleBoard[8][8];
-  teamifyBoard(board, simpleBoard);
-  drawSimpleBoard(simpleBoard);
+  int posY;
+  int posX;
+  int position[2];
+  posY = position[0];
+  posX = position[1];
+  getPositionOfPiece(11, board, position);
+  printf("%d\n", posY);
+  printf("%d\n", posX);
   return 0;
 }

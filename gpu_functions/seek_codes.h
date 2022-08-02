@@ -11,5 +11,17 @@ void getTiles(int piece, int board[8][8], int *tilesY, int *tilesX) {
 
 void getKnightTiles(int piece, int board[8][8], int *tilesY, int *tilesX) {
   // Returns the available squares that a knight can move to.
-  tilesX = malloc(sizeof(), )
+  int posY;
+  int posX;
+  getPositionOfPiece(piece, board, posY, posX);
+  int unfilteredPattern[2][8] = {
+    {}
+  };
+  tilesY = (int*) malloc(8 * sizeof(int)); // Allocates the memory for storing the tiles on Y axis.
+  tilesX = (int*) malloc(8 * sizeof(int)); // Allocates the memory for storing the tiles on X axis.
+  int simpleBoard;
+  teamifyBoard(board, simpleBoard);
+  int retSize = 0;
+
+
 }
