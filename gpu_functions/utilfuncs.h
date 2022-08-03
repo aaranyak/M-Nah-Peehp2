@@ -80,13 +80,11 @@ void teamifyBoard(int board[8][8], int newBoard[8][8]) {
 
 void getPositionOfPiece(int piece, int board[8][8], int pos[2]) {
   // Returns the x and y position of the piece on the board.
-  for (size_t y = 0; y < 8; y++) {
-    for (size_t x = 0; x < 8; x++) {
+  for (int y = 0; y < 8; y++) {
+    for (int x = 0; x < 8; x++) {
       if (board[y][x] == piece) {
         pos[0] = y;
         pos[1] = x;
-        printf("%d\n",y );
-        printf("%d\n",x );
       }
     }
   }

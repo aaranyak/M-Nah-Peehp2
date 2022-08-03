@@ -12,13 +12,8 @@ int main(int argc, char const *argv[]) {
     {32,31,30,29,28,27,26,25},
     {24,23,22,20,21,19,18,17},
   };
-  int posY;
-  int posX;
-  int position[2];
-  posY = position[0];
-  posX = position[1];
-  getPositionOfPiece(11, board, position);
-  printf("%d\n", posY);
-  printf("%d\n", posX);
+  int *tilesY;
+  int *tilesX;
+  printf("%d\n", (sizeof(tilesY) / sizeof(int));
   return 0;
 }
