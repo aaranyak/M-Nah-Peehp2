@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int getPieceById(int id) {
   // Takes the piece id and returns the piece type.

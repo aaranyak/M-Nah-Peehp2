@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "utilfuncs.h"
-
+#include "seek_codes.h"
 int main(int argc, char const *argv[]) {
   int board[8][8] = {
     {1,2,3,4,5,6,7,8},
@@ -12,8 +11,7 @@ int main(int argc, char const *argv[]) {
     {32,31,30,29,28,27,26,25},
     {24,23,22,20,21,19,18,17},
   };
-  int *tilesY;
-  int *tilesX;
-  printf("%d\n", (sizeof(tilesY) / sizeof(int));
+  int *tiles = getTiles(2, board)
+  printf("%d\n", tilesY[0]);
   return 0;
 }
