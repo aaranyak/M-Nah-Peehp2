@@ -17,5 +17,4 @@ board_init_state = [
     [24,23,22,20,21,19,18,17]
 ]
 board = np.array(board_init_state)
-game = AiVsHumanSimple(False)
-game.play()
+print(type(hash_board(board)))

@@ -93,3 +93,13 @@ def count_material(board, colour):
         if ptype == 4: # Piece is king.
             material -= 0
     return material
+
+def hash_board(board):
+    simple_board = simplify_board(board)
+    l_types = 
+    board_hash = np.int128()
+    for row in simple_board:
+        for val in row:
+            board_hash = board_hash << 3
+            board_hash += val
+    return board_hash
