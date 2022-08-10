@@ -23,17 +23,19 @@ int *getKnightTiles(int piece, int board[8][8]) {
     int y = unfilteredPattern[baseIndex][0];
     int x = unfilteredPattern[baseIndex][1];
     if ((y >= 0 && y < 8) && (x >= 0 & x < 8)) { // If the tile exists on a board.
-      printf("%d ", x);
-      printf("%d\n", y);
-      if (!(simpleBoard[y][x] != 1)) { // If square is not blocked by own piece.
+      if (simpleBoard[y][x] != 0) { // If square is not blocked by own piece.
         retTiles[retSize * 2] = y;
         retTiles[(retSize * 2) + 1] = x;
         retSize++;
       }
     }
   }
-  printf("%d\n", retSize);
-  retTiles = realloc(retTiles, sizeof(int) * retSize * 2);
+  if (retSize == 0) {
+    retTiles = realloc(retTiles, sizeof(int) * 1)
+  }
+  else {
+    retTiles = realloc(retTiles, sizeof(int) * retSize * 2);
+  }
   return retTiles;
 }
 
@@ -43,5 +45,8 @@ int *getTiles(int piece, int board[8][8]) {
   if (pType == 2) {
     // If piece is a knight.
     return getKnightTiles(piece, board);
+  }
+  if (ptype == 6) {
+    // If piece is a pawn
   }
 }
