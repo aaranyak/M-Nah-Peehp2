@@ -1,7 +1,7 @@
 #include "utilfuncs.h"
 #include <stdlib.h>
 int *getKnightTiles(int piece, int board[8][8]) {
-  int *retTiles = malloc(8 * sizeof(int)); // Allocate memory for the tiles.
+  int *retTiles = malloc(32 * 8); // Allocate memory for the tiles.
   int position[2];
   getPositionOfPiece(piece, board, position);
   int posY = position[0];
@@ -30,8 +30,9 @@ int *getKnightTiles(int piece, int board[8][8]) {
       }
     }
   }
+  printf("%d\n", retSize);
   if (retSize == 0) {
-    retTiles = realloc(retTiles, sizeof(int) * 1)
+    retTiles = realloc(retTiles, sizeof(int));
   }
   else {
     retTiles = realloc(retTiles, sizeof(int) * retSize * 2);
@@ -46,7 +47,8 @@ int *getTiles(int piece, int board[8][8]) {
     // If piece is a knight.
     return getKnightTiles(piece, board);
   }
-  if (ptype == 6) {
+  if (pType == 6) {
     // If piece is a pawn
+
   }
 }
