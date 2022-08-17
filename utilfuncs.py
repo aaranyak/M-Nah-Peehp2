@@ -1,6 +1,7 @@
 import numpy as np
 import tkinter as tk
 import time
+import random
 def draw_board(board):
     """Displays the state of the board on the terminal."""
     wpieces = ["__", "♜", "♞", "♝", "♚", "♛", "♟"]
@@ -41,6 +42,9 @@ def get_piece_by_id(id):
     if id in range(9,17) or id in range(25,33):
         type = 6
     team = id < 17
+    if id >= 33 and id <= 36: # For Castleable rooks.
+        type = 1
+        team = id < 35
     return (type, team)
 def teamify_board(board, inv = False):
     """Returns a simplified version of the board
@@ -142,10 +146,12 @@ def get_pieces_from_board(*args):
         pieces = filter(lambda num:num, line_board)
     else:
         if team:
-            pieces = filter(lambda num:num and num < 17, line_board)
+            pieces = filter(lambda num:num and get_piece_by_id(num)[1], line_board)
         else:
-            pieces = filter(lambda num:num and num > 16, line_board)
-    return list(pieces)
+            pieces = filter(lambda num:num and not get_piece_by_id(num)[1], line_board)
+    retval = list(pieces)
+    random.shuffle(retval)
+    return retval
 
 def render_board(*args):
     """Displays the state of the board on a separate window"""

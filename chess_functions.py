@@ -20,9 +20,41 @@ def move_piece_on_board(piece, tile, board):
     """Return board with a moved piece"""
     board = np.copy(board)
     cy,cx = get_position_of_piece(piece, board)
+    if piece == 4 and tile == (0,1): # If white king is castling on king's side
+        move_piece_on_board(33, (0,2), board) # Move rook behind king
+    if piece == 4 and tile == (0,5): # If white king is castling on queen's side
+        move_piece_on_board(34, (0,6), board) # Move rook behind king
+    if piece == 20 and tile == (7,1): # If black king is castling on king's side
+        move_piece_on_board(36, (7,2), board) # Move rook behind king
+    if piece == 20 and tile == (7,5): # If black king is castling on queen's side
+        move_piece_on_board(35, (7,6), board) # Move rook behind king
     dy,dx = tile
     board[cy][cx] = 0
     board[dy][dx] = piece
+    if piece == 33: # If rook is moved
+        board[tile[0]][tile[1]] = 1 # Loses right to castle on that side.
+    if piece == 34: # If rook is moved
+        board[tile[0]][tile[1]] = 8 # Loses right to castle on that side.
+    if piece == 35: # If rook is moved
+        board[tile[0]][tile[1]] = 17 # Loses right to castle on that side.
+    if piece == 36: # If rook is moved
+        board[tile[0]][tile[1]] = 24 # Loses right to castle on that side.
+    if piece == 4: # If white king is moved.
+        pieces_on_board = get_pieces_from_board(board)
+        if 33 in pieces_on_board: # If rook has not moved
+            y1, x1 = get_position_of_piece(33, board)
+            board[y1][x1] = 1 # Loses right to castle on one side.
+        if 34 in pieces_on_board:
+            y2, x2 = get_position_of_piece(34, board)
+            board[y2][x2] = 8 # Loses right to castle on the other side.
+    if piece == 20: # If black king is moved.
+        pieces_on_board = get_pieces_from_board(board)
+        if 35 in pieces_on_board: # If rook has not moved
+            y1, x1 = get_position_of_piece(35, board)
+            board[y1][x1] = 17 # Loses right to castle on one side.
+        if 36 in pieces_on_board:
+            y2, x2 = get_position_of_piece(36, board)
+            board[y2][x2] = 24 # Loses right to castle on the other side.
     return board
 def is_legal(piece, tile, board):
     """Checks if move is legal"""
