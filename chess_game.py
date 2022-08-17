@@ -34,7 +34,7 @@ class ChessGame():
         if ptype != 0 and piece in get_pieces_from_board(self.board): # Check if piece is on board.
             if tile in get_tiles(piece, self.board): # If move is pseudo legal check if it is legal.
                 if is_legal(piece, tile, self.board): # If move is legal, play move
-                    py, px = get_position_of_piece(self.board)
+                    py, px = get_position_of_piece(piece, self.board)
                     if (py,px) == (0,3) or (py,px) == (7,3):
                         if piece == 4 and tile == (0,1): # If white king is castling on king's side
                             self.move_piece(33, (0,2)) # Move rook behind king
