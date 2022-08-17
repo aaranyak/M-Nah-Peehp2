@@ -33,15 +33,17 @@ class ChessGame():
         ptype = get_piece_by_id(piece)[0]
         if ptype != 0 and piece in get_pieces_from_board(self.board): # Check if piece is on board.
             if tile in get_tiles(piece, self.board): # If move is pseudo legal check if it is legal.
-                if is_legal(piece, tile, self.board): # If move is legal, play move.
-                    if piece == 4 and tile == (0,1): # If white king is castling on king's side
-                        self.move_piece(33, (0,2)) # Move rook behind king
-                    if piece == 4 and tile == (0,5): # If white king is castling on queen's side
-                        self.move_piece(34, (0,4)) # Move rook behind king
-                    if piece == 20 and tile == (7,1): # If black king is castling on king's side
-                        self.move_piece(36, (7,2)) # Move rook behind king
-                    if piece == 20 and tile == (7,5): # If black king is castling on queen's side
-                        self.move_piece(35, (7,4)) # Move rook behind king
+                if is_legal(piece, tile, self.board): # If move is legal, play move
+                    py, px = get_position_of_piece(self.board)
+                    if (py,px) == (0,3) or (py,px) == (7,3):
+                        if piece == 4 and tile == (0,1): # If white king is castling on king's side
+                            self.move_piece(33, (0,2)) # Move rook behind king
+                        if piece == 4 and tile == (0,5): # If white king is castling on queen's side
+                            self.move_piece(34, (0,4)) # Move rook behind king
+                        if piece == 20 and tile == (7,1): # If black king is castling on king's side
+                            self.move_piece(36, (7,2)) # Move rook behind king
+                        if piece == 20 and tile == (7,5): # If black king is castling on queen's side
+                            self.move_piece(35, (7,4)) # Move rook behind king
                     self.move_piece(piece, tile)
                     if piece == 33: # If rook is moved
                         self.board[tile[0]][tile[1]] = 1 # Loses right to castle on that side.
