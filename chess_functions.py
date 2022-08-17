@@ -23,11 +23,11 @@ def move_piece_on_board(piece, tile, board):
     if piece == 4 and tile == (0,1): # If white king is castling on king's side
         move_piece_on_board(33, (0,2), board) # Move rook behind king
     if piece == 4 and tile == (0,5): # If white king is castling on queen's side
-        move_piece_on_board(34, (0,6), board) # Move rook behind king
+        move_piece_on_board(34, (0,4), board) # Move rook behind king
     if piece == 20 and tile == (7,1): # If black king is castling on king's side
         move_piece_on_board(36, (7,2), board) # Move rook behind king
     if piece == 20 and tile == (7,5): # If black king is castling on queen's side
-        move_piece_on_board(35, (7,6), board) # Move rook behind king
+        move_piece_on_board(35, (7,4), board) # Move rook behind king
     dy,dx = tile
     board[cy][cx] = 0
     board[dy][dx] = piece
