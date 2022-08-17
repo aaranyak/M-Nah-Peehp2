@@ -37,10 +37,10 @@ class ChessGame():
                     if piece == 4 and tile == (0,1): # If white king is castling on king's side
                         self.move_piece(33, (0,2)) # Move rook behind king
                     if piece == 4 and tile == (0,5): # If white king is castling on queen's side
-                        self.move_piece(34, (0,6)) # Move rook behind king
+                        self.move_piece(34, (0,4)) # Move rook behind king
                     if piece == 20 and tile == (7,1): # If black king is castling on king's side
                         self.move_piece(36, (7,2)) # Move rook behind king
-                    if piece == 20 and tile == (7,5): # If black king is castling on queen's side
+                    if piece == 20 and tile == (7,4): # If black king is castling on queen's side
                         self.move_piece(35, (7,6)) # Move rook behind king
                     self.move_piece(piece, tile)
                     if piece == 33: # If rook is moved
