@@ -6,6 +6,7 @@ from game_types import *
 from chess_functions import *
 from ai_functions import *
 from ai_game_alg import AiVsHumanSimple
+import time
 board_init_state = [
     [1,2,3,4,5,6,7,8],
     [9,10,11,12,13,14,15,16],

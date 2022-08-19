@@ -90,9 +90,9 @@ class AiVsHumanSimple(ChessGame):
                 self.show_tiles = []
                 self.update_canvas()
     def play_move(self):
-        evaluation = minmax_pruning(self.board,3, not self.color, float("-inf"), float("inf"), True)
+        evaluation = iterative_deepening(self.board, 10)
         print(evaluation)
-        self.make_move(evaluation[1], evaluation[2])
+        self.make_move(evaluation[1][1], evaluation[1][2])
     def update_canvas(self):
         self.canvas.delete("all")
         piece_icons = ["", "♜", "♞", "♝", "♚", "♛", "♟"]

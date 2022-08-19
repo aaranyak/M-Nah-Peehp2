@@ -91,7 +91,14 @@ def get_all_moves(board, colour):
             if is_legal(piece, move, board): # If move is legal.
                 moves.append((piece, move)) # Add the move
     return moves
-
+def get_all_pseudo_legal_moves(board, colour):
+    """Returns all possible moves to play"""
+    pieces = get_pieces_from_board(board, colour)
+    moves = []
+    for piece in pieces: # Loop through all the pieces.
+        for move in get_tiles(piece, board): # Play all moves.
+            moves.append((piece, move)) # Add the move
+    return moves
 def count_material(board, colour):
     """Counts the material of pieces on the board."""
     material = 0
