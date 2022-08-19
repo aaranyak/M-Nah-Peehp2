@@ -107,6 +107,17 @@ def get_king_tiles(piece, board):
     for ty, tx in unfiltered_tiles: # Filter out the tiles that are blocked by our own pieces.
         if simple_board[ty][tx] != 0:
             filtered_tiles.append((ty,tx))
+    team = ptype[1]
+    if team: # If king is white.
+        if board[0][0] == 33 and board[0][1] == 0 and board[0][2] == 0: # If castling is allowed on king's side.
+            filtered_tiles.append((0,1)) # Castle on king's side.
+        if board[0][7] == 34 and board[0][6] == 0 and board[0][5] == 0 and board[0][4] == 0: # If castling is allowed on queen's side.
+            filtered_tiles.append((0,5)) # Castle on queen's side.
+    else: # King is black.
+        if board[7][0] == 36 and board[7][1] == 0 and board[7][2] == 0: # If castling is allowed on king's side.
+            filtered_tiles.append((7,1)) # Castle on king's side.
+        if board[7][7] == 35 and board[7][6] == 0 and board[7][5] == 0 and board[7][4] == 0: # If castling is allowed on queen's side.
+            filtered_tiles.append((7,5)) # Castle on queen's side.
     return filtered_tiles
 
 def get_rook_tiles(piece, board):
